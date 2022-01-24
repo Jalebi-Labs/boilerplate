@@ -1,4 +1,4 @@
-import { createClient } from "@supabase/supabase-js";
+import { createClient, User, AuthChangeEvent, Session } from "@supabase/supabase-js";
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL ?? '',
@@ -6,3 +6,5 @@ const supabase = createClient(
 )
 
 export default supabase;
+
+export type { User, AuthChangeEvent, Session }
