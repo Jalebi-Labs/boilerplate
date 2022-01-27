@@ -66,6 +66,8 @@ export function UserContextProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     const subscription = supabase.auth.onAuthStateChange(
       async (event: AuthChangeEvent, session: Session | null) => {
+        console.log('SUBSCRIBED TO AUTH STATE CHANGE');
+        console.log(event, session);
         switch (event) {
           case 'SIGNED_IN': {
             if (!session) {
@@ -102,6 +104,7 @@ export function UserContextProvider({ children }: { children: ReactNode }) {
     );
 
     return () => {
+      console.log('UNSUBSCRIBED FROM AUTH STATE CHANGE');
       subscription.data?.unsubscribe();
     };
   }, []);

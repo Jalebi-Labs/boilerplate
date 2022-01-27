@@ -22,10 +22,15 @@ const Home: NextPage = () => {
         <div>
           <button
             onClick={async () => {
-              const data = await supabase.auth.signIn({
+              // const data = await supabase.auth.signIn({
+              //   email: 'jalebi.labs+a@gmail.com',
+              //   // no password = magic link sign in
+              //   password: 'password',
+              // });
+
+              const data = await supabase.auth.signUp({
                 email: 'jalebi.labs+a@gmail.com',
-                // no password = magic link sign in
-                // password: ''
+                password: 'password',
               });
 
               console.log(data);
