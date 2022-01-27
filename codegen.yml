@@ -1,14 +1,17 @@
 overwrite: true
-schema: "http://localhost:3000/api/graphql"
-documents: "src/**/*.graphql"
+schema: './schemas/main.graphql'
+documents:
+  - 'components/**/*.{js,jsx,ts,tsx}'
+  - 'pages/**/*.{js,jsx,ts,tsx}'
 generates:
-  src/generated/graphql.ts:
+  schemas/frontend-graphql.ts:
     plugins:
-      - "typescript"
-      - "typescript-operations"
-      - "typescript-resolvers"
-      - "typescript-graphql-files-modules"
-      - "typescript-document-nodes"
-  ./graphql.schema.json:
+      - 'typescript'
+      - 'typescript-operations'
+      - 'typescript-resolvers'
+      # - 'typescript-graphql-files-modules'
+      - 'typescript-document-nodes'
+      - 'typescript-react-query'
+  schemas/frontend-graphql.json:
     plugins:
-      - "introspection"
+      - 'introspection'
