@@ -8,7 +8,6 @@ import {
 } from 'react';
 
 import supabase, { User, AuthChangeEvent, Session } from '../utils/supabase';
-import { UserProfile } from '../types/UserProfile';
 
 type UserContextResolved = {
   state: 'resolved';

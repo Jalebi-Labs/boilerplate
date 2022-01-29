@@ -1,3 +1,26 @@
 type Query {
   viewer: String
 }
+
+type Mutation {
+  signUpUser(input: SignUpUserInput): SignUpUserPayload
+  signInUser(input: SignInUserInput): SignInUserPayload
+}
+
+type SignUpUserPayload {
+  hello: String
+}
+
+input SignUpUserInput {
+  email: String!
+  password: String!
+}
+
+type SignInUserPayload {
+  hello: String
+}
+
+input SignInUserInput {
+  email: String!
+  password: String!
+}

@@ -3,9 +3,11 @@ import fs from 'fs';
 import path from 'path';
 
 import { rootQuery } from './rootQuery';
+import { rootMutation } from './rootMutation';
 
 export const schema = new GraphQLSchema({
-  query: rootQuery
+  query: rootQuery,
+  mutation: rootMutation,
 })
 
 async function writeSchema(

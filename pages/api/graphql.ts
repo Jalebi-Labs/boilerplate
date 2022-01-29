@@ -9,17 +9,19 @@ const server = new ApolloServer({
   context: generateContext
 })
 
-export const config = {
-  api: {
-    bodyParser: false,
-  },
-}
+const startServer = server.start()
 
 const handler: NextApiHandler = async (req, res) => {
-  await server.start();
+  await startServer
   return server.createHandler({
     path: '/api/graphql',
   })(req, res)
 }
 
 export default handler
+
+export const config = {
+  api: {
+    bodyParser: false,
+  },
+}

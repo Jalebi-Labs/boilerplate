@@ -12,6 +12,10 @@ generates:
       # - 'typescript-graphql-files-modules'
       - 'typescript-document-nodes'
       - 'typescript-react-query'
+    config:
+      fetcher: graphql-request
+      exposeQueryKeys: true
+      exposeMutationKeys: true
   schemas/frontend-graphql.json:
     plugins:
       - 'introspection'
