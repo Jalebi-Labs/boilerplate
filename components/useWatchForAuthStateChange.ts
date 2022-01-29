@@ -1,18 +1,20 @@
 import { useEffect } from "react";
+import updateUserCookie from "../client-functions/updateUserCookie";
 
-import supabase, { AuthChangeEvent, Session } from "../utils/supabase";
-
-
+import supabase from "../utils/supabase";
 
 export default function useWatchForAuthStateChange() {
-    useEffect(() => {
-        const { data: authListener } = supabase.auth.onAuthStateChange((event, session) => {
-            console.log('updating', event, session)
-            updateSupabaseCookie(event, session);
-        });
-
-        return () => {
-            authListener?.unsubscribe();
-        };
+  useEffect(() => {
+    const subscription = supabase.auth.onAuthStateChange((event, session) => {
+      switch (event) {
+        case 'SIGNED_IN':
+        case 'SIGNED_OUT':
+          updateUserCookie(event, session);
+      }
     });
+
+    return () => {
+      subscription.data?.unsubscribe();
+    };
+  });
 }

@@ -9,9 +9,9 @@ datasource db {
 
 model UserProfile {
   id           String  @id @db.Uuid
+  name         String  @default("")
   isSubscribed Boolean @default(false) @map("is_subscribed")
 
   createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
-  updatedAt DateTime @updatedAt @map("updated_at")
   @@map("user_profiles")
 }

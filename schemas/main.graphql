@@ -3,24 +3,13 @@ type Query {
 }
 
 type Mutation {
-  signUpUser(input: SignUpUserInput): SignUpUserPayload
-  signInUser(input: SignInUserInput): SignInUserPayload
+  updateUser(input: UpdateUserInput): UpdateUserPayload
 }
 
-type SignUpUserPayload {
+type UpdateUserPayload {
   hello: String
 }
 
-input SignUpUserInput {
-  email: String!
-  password: String!
-}
-
-type SignInUserPayload {
-  hello: String
-}
-
-input SignInUserInput {
-  email: String!
-  password: String!
+input UpdateUserInput {
+  name: String
 }
