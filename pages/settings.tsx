@@ -1,10 +1,10 @@
 import type { NextPage, GetServerSideProps } from 'next';
 import Head from 'next/head';
-import styles from '../styles/Home.module.css';
+import styles from '@/styles/Home.module.css';
 
-import supabase from '../utils/supabase';
-import signInUser from '../client-functions/signInUser';
-import useExampleQuery from '../components/useExampleQuery';
+import supabase from '@/utils/supabase';
+import signInUser from '@/client-functions/signInUser';
+import useExampleQuery from '@/components/useExampleQuery';
 
 const Home: NextPage = () => {
   useExampleQuery();

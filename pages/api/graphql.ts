@@ -1,8 +1,8 @@
 import { NextApiHandler } from 'next';
 import { ApolloServer } from 'apollo-server-micro';
 
-import { schema } from '../../server/graphql/schema';
-import { generateContext } from '../../server/graphql/context';
+import { schema } from '@/server/graphql/schema';
+import { generateContext } from '@/server/graphql/context';
 
 const server = new ApolloServer({
   schema,

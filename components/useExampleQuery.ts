@@ -1,5 +1,5 @@
-import { client, gql } from "../utils/graphqlClient";
-import { useExampleQueryQuery } from "../schemas/frontend-graphql";
+import { client, gql } from "@/utils/graphqlClient";
+import { useExampleQueryQuery } from "@/schemas/frontend-graphql";
 
 gql`
   query exampleQuery {

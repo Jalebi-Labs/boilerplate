@@ -1,8 +1,8 @@
-import '../styles/globals.css';
+import '@/styles/globals.css';
 import type { AppProps } from 'next/app';
 
-import AppProviders from '../components/AppProviders';
-import useWatchForAuthStateChange from '../components/useWatchForAuthStateChange';
+import AppProviders from '@/components/AppProviders';
+import useWatchForAuthStateChange from '@/components/useWatchForAuthStateChange';
 
 function MyApp({ Component, pageProps }: AppProps) {
   useWatchForAuthStateChange();

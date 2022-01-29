@@ -1,5 +1,4 @@
-import supabase from "../utils/supabase";
-import updateUserCookie from "./updateUserCookie";
+import supabase from "@/utils/supabase";
 
 export default async function signOutUser() {
   const res = await supabase.auth.signOut()

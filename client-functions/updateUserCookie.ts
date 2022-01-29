@@ -1,4 +1,4 @@
-import { AuthChangeEvent, Session } from "../utils/supabase";
+import { AuthChangeEvent, Session } from "@/utils/supabase";
 
 export default async function updateUserCookie(event: AuthChangeEvent, session: Session | null) {
   await fetch('/api/auth/set-session-cookie', {

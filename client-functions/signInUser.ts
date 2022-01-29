@@ -1,5 +1,4 @@
-import supabase from "../utils/supabase";
-import updateUserCookie from "./updateUserCookie";
+import supabase from "@/utils/supabase";
 
 type SignInUserArgs = {
   email: string;

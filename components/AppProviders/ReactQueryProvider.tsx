@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 import { QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
 
-import { queryClient } from '../../utils/queryClient';
+import { queryClient } from '@/utils/queryClient';
 
 type Props = {
   children: ReactNode;

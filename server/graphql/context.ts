@@ -1,6 +1,6 @@
 import { NextApiRequest } from "next"
 
-import supabase from "../../utils/supabase"
+import supabase from "@/utils/supabase"
 
 type LoggedInUserContext = {
   isUserLoggedIn: true,

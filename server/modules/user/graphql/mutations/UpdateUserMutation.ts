@@ -1,7 +1,7 @@
-import { GraphQLFieldConfig, GraphQLObjectType, GraphQLNonNull, GraphQLString, GraphQLInputObjectType, GraphQLFieldConfigArgumentMap } from "graphql";
+import { GraphQLFieldConfig, GraphQLObjectType, GraphQLString, GraphQLInputObjectType } from "graphql";
 
-import { Context } from '../../../graphql/context';
-import updateUser, { UpdateUserArgs } from '../interactions/updateUser';
+import { Context } from '@/server/graphql/context';
+import updateUser, { UpdateUserArgs } from '@/server/modules/user/interactions/updateUser';
 
 type UpdateUserInputType = {
   name?: string | null;
