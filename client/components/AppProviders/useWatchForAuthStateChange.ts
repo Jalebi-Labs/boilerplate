@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import updateUserCookie from "@/client-functions/updateUserCookie";
+import updateUserCookie from "@/client/utils/auth/updateUserCookie";
 import supabase from "@/utils/supabase";
 
 export default function useWatchForAuthStateChange() {

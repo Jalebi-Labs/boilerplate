@@ -9,7 +9,6 @@ generates:
       - 'typescript'
       - 'typescript-operations'
       - 'typescript-resolvers'
-      # - 'typescript-graphql-files-modules'
       - 'typescript-document-nodes'
       - 'typescript-react-query'
     config:

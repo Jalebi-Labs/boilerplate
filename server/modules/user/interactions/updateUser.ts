@@ -1,5 +1,5 @@
-import prisma from "@/utils/prisma"
 import { UserProfile } from '@prisma/client'
+import prisma from "@/utils/prisma"
 
 export type UpdateUserArgs = {
   name?: string,

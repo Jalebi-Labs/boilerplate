@@ -1,4 +1,4 @@
-import { client, gql } from "@/utils/graphqlClient";
+import { client, gql } from "@/client/utils/graphqlClient";
 import { useExampleQueryQuery } from "@/schemas/frontend-graphql";
 
 gql`

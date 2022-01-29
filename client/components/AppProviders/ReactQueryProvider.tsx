@@ -2,15 +2,13 @@ import { ReactNode } from 'react';
 import { QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
 
-import { queryClient } from '@/utils/queryClient';
+import { queryClient } from '@/client/utils/queryClient';
 
 type Props = {
   children: ReactNode;
 };
 
-export default function ReactQueryProvider(props: Props) {
-  const { children } = props;
-
+export default function ReactQueryProvider({ children }: Props) {
   return (
     <QueryClientProvider client={queryClient}>
       {children}
