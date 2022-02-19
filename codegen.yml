@@ -1,7 +1,7 @@
 overwrite: true
 schema: './schemas/main.graphql'
 documents:
-  - 'components/**/*.{js,jsx,ts,tsx}'
+  - 'client/**/*.{js,jsx,ts,tsx}'
   - 'pages/**/*.{js,jsx,ts,tsx}'
 generates:
   schemas/frontend-graphql.ts:

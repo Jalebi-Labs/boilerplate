@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 
 import ReactQueryProvider from './ReactQueryProvider';
-import useWatchForAuthStateChanges from './useWatchForAuthStateChange';
+import DesignSystemProvider from './DesignSystemProvider';
 
 type Props = {
   children: ReactNode;
@@ -10,7 +10,9 @@ type Props = {
 export default function AppProviders(props: Props) {
   const { children } = props;
 
-  useWatchForAuthStateChanges();
-
-  return <ReactQueryProvider>{children}</ReactQueryProvider>;
+  return (
+    <ReactQueryProvider>
+      <DesignSystemProvider>{children}</DesignSystemProvider>
+    </ReactQueryProvider>
+  );
 }

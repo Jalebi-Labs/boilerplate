@@ -1,3 +1,4 @@
+import { invalidateCurrentUserQuery } from "@/client/queries/currentUser";
 import supabase from "@/utils/supabase";
 
 type SignUpUserArgs = {
@@ -14,4 +15,6 @@ export default async function signUpUser(args: SignUpUserArgs) {
   if (res.error) {
     throw new Error(res.error.message)
   }
+
+  invalidateCurrentUserQuery()
 }

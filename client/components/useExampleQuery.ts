@@ -3,7 +3,11 @@ import { useExampleQueryQuery } from "@/schemas/frontend-graphql";
 
 gql`
   query exampleQuery {
-    viewer
+    viewer {
+      user {
+        name
+      }
+    }
   }
 `
 

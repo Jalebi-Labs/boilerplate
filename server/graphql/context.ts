@@ -2,7 +2,7 @@ import { NextApiRequest } from "next"
 
 import supabase from "@/utils/supabase"
 
-type LoggedInUserContext = {
+export type LoggedInUserContext = {
   isUserLoggedIn: true,
   userId: string;
 }

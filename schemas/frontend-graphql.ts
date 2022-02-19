@@ -2,7 +2,7 @@ import { GraphQLResolveInfo } from 'graphql';
 import gql from 'graphql-tag';
 import { GraphQLClient } from 'graphql-request';
 import { RequestInit } from 'graphql-request/dist/types.dom';
-import { useQuery, UseQueryOptions, useMutation, UseMutationOptions } from 'react-query';
+import { useQuery, UseQueryOptions } from 'react-query';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
@@ -24,56 +24,47 @@ export type Scalars = {
 
 export type Mutation = {
   __typename?: 'Mutation';
-  signInUser?: Maybe<SignInUserPayload>;
-  signUpUser?: Maybe<SignUpUserPayload>;
+  updateUser?: Maybe<UpdateUserPayload>;
 };
 
 
-export type MutationSignInUserArgs = {
-  input?: InputMaybe<SignInUserInput>;
-};
-
-
-export type MutationSignUpUserArgs = {
-  input?: InputMaybe<SignUpUserInput>;
+export type MutationUpdateUserArgs = {
+  input?: InputMaybe<UpdateUserInput>;
 };
 
 export type Query = {
   __typename?: 'Query';
-  viewer?: Maybe<Scalars['String']>;
+  viewer?: Maybe<Viewer>;
 };
 
-export type SignInUserInput = {
-  email: Scalars['String'];
-  password: Scalars['String'];
+export type UpdateUserInput = {
+  name?: InputMaybe<Scalars['String']>;
 };
 
-export type SignInUserPayload = {
-  __typename?: 'SignInUserPayload';
+export type UpdateUserPayload = {
+  __typename?: 'UpdateUserPayload';
   hello?: Maybe<Scalars['String']>;
 };
 
-export type SignUpUserInput = {
-  email: Scalars['String'];
-  password: Scalars['String'];
+export type User = {
+  __typename?: 'User';
+  name: Scalars['String'];
 };
 
-export type SignUpUserPayload = {
-  __typename?: 'SignUpUserPayload';
-  hello?: Maybe<Scalars['String']>;
+export type Viewer = {
+  __typename?: 'Viewer';
+  user: User;
 };
 
 export type ExampleQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type ExampleQueryQuery = { __typename?: 'Query', viewer?: string | null | undefined };
+export type ExampleQueryQuery = { __typename?: 'Query', viewer?: { __typename?: 'Viewer', user: { __typename?: 'User', name: string } } | null | undefined };
 
-export type SignInUserMutationMutationVariables = Exact<{
-  input: SignInUserInput;
-}>;
+export type CurrentUserQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type SignInUserMutationMutation = { __typename?: 'Mutation', signInUser?: { __typename?: 'SignInUserPayload', hello?: string | null | undefined } | null | undefined };
+export type CurrentUserQueryQuery = { __typename?: 'Query', viewer?: { __typename?: 'Viewer', user: { __typename?: 'User', name: string } } | null | undefined };
 
 
 
@@ -147,11 +138,11 @@ export type ResolversTypes = {
   Boolean: ResolverTypeWrapper<Scalars['Boolean']>;
   Mutation: ResolverTypeWrapper<{}>;
   Query: ResolverTypeWrapper<{}>;
-  SignInUserInput: SignInUserInput;
-  SignInUserPayload: ResolverTypeWrapper<SignInUserPayload>;
-  SignUpUserInput: SignUpUserInput;
-  SignUpUserPayload: ResolverTypeWrapper<SignUpUserPayload>;
   String: ResolverTypeWrapper<Scalars['String']>;
+  UpdateUserInput: UpdateUserInput;
+  UpdateUserPayload: ResolverTypeWrapper<UpdateUserPayload>;
+  User: ResolverTypeWrapper<User>;
+  Viewer: ResolverTypeWrapper<Viewer>;
 };
 
 /** Mapping between all available schema types and the resolvers parents */
@@ -159,57 +150,72 @@ export type ResolversParentTypes = {
   Boolean: Scalars['Boolean'];
   Mutation: {};
   Query: {};
-  SignInUserInput: SignInUserInput;
-  SignInUserPayload: SignInUserPayload;
-  SignUpUserInput: SignUpUserInput;
-  SignUpUserPayload: SignUpUserPayload;
   String: Scalars['String'];
+  UpdateUserInput: UpdateUserInput;
+  UpdateUserPayload: UpdateUserPayload;
+  User: User;
+  Viewer: Viewer;
 };
 
 export type MutationResolvers<ContextType = any, ParentType extends ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation']> = {
-  signInUser?: Resolver<Maybe<ResolversTypes['SignInUserPayload']>, ParentType, ContextType, RequireFields<MutationSignInUserArgs, never>>;
-  signUpUser?: Resolver<Maybe<ResolversTypes['SignUpUserPayload']>, ParentType, ContextType, RequireFields<MutationSignUpUserArgs, never>>;
+  updateUser?: Resolver<Maybe<ResolversTypes['UpdateUserPayload']>, ParentType, ContextType, RequireFields<MutationUpdateUserArgs, never>>;
 };
 
 export type QueryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = {
-  viewer?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  viewer?: Resolver<Maybe<ResolversTypes['Viewer']>, ParentType, ContextType>;
 };
 
-export type SignInUserPayloadResolvers<ContextType = any, ParentType extends ResolversParentTypes['SignInUserPayload'] = ResolversParentTypes['SignInUserPayload']> = {
+export type UpdateUserPayloadResolvers<ContextType = any, ParentType extends ResolversParentTypes['UpdateUserPayload'] = ResolversParentTypes['UpdateUserPayload']> = {
   hello?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
-export type SignUpUserPayloadResolvers<ContextType = any, ParentType extends ResolversParentTypes['SignUpUserPayload'] = ResolversParentTypes['SignUpUserPayload']> = {
-  hello?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+export type UserResolvers<ContextType = any, ParentType extends ResolversParentTypes['User'] = ResolversParentTypes['User']> = {
+  name?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type ViewerResolvers<ContextType = any, ParentType extends ResolversParentTypes['Viewer'] = ResolversParentTypes['Viewer']> = {
+  user?: Resolver<ResolversTypes['User'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
 export type Resolvers<ContextType = any> = {
   Mutation?: MutationResolvers<ContextType>;
   Query?: QueryResolvers<ContextType>;
-  SignInUserPayload?: SignInUserPayloadResolvers<ContextType>;
-  SignUpUserPayload?: SignUpUserPayloadResolvers<ContextType>;
+  UpdateUserPayload?: UpdateUserPayloadResolvers<ContextType>;
+  User?: UserResolvers<ContextType>;
+  Viewer?: ViewerResolvers<ContextType>;
 };
 
 
 
 export const ExampleQuery = gql`
     query exampleQuery {
-  viewer
+  viewer {
+    user {
+      name
+    }
+  }
 }
     `;
-export const SignInUserMutation = gql`
-    mutation SignInUserMutation($input: SignInUserInput!) {
-  signInUser(input: $input) {
-    hello
+export const CurrentUserQuery = gql`
+    query currentUserQuery {
+  viewer {
+    user {
+      name
+    }
   }
 }
     `;
 
 export const ExampleQueryDocument = `
     query exampleQuery {
-  viewer
+  viewer {
+    user {
+      name
+    }
+  }
 }
     `;
 export const useExampleQueryQuery = <
@@ -230,24 +236,29 @@ export const useExampleQueryQuery = <
 useExampleQueryQuery.getKey = (variables?: ExampleQueryQueryVariables) => variables === undefined ? ['exampleQuery'] : ['exampleQuery', variables];
 ;
 
-export const SignInUserMutationDocument = `
-    mutation SignInUserMutation($input: SignInUserInput!) {
-  signInUser(input: $input) {
-    hello
+export const CurrentUserQueryDocument = `
+    query currentUserQuery {
+  viewer {
+    user {
+      name
+    }
   }
 }
     `;
-export const useSignInUserMutationMutation = <
-      TError = unknown,
-      TContext = unknown
+export const useCurrentUserQueryQuery = <
+      TData = CurrentUserQueryQuery,
+      TError = unknown
     >(
       client: GraphQLClient,
-      options?: UseMutationOptions<SignInUserMutationMutation, TError, SignInUserMutationMutationVariables, TContext>,
+      variables?: CurrentUserQueryQueryVariables,
+      options?: UseQueryOptions<CurrentUserQueryQuery, TError, TData>,
       headers?: RequestInit['headers']
     ) =>
-    useMutation<SignInUserMutationMutation, TError, SignInUserMutationMutationVariables, TContext>(
-      'SignInUserMutation',
-      (variables?: SignInUserMutationMutationVariables) => fetcher<SignInUserMutationMutation, SignInUserMutationMutationVariables>(client, SignInUserMutationDocument, variables, headers)(),
+    useQuery<CurrentUserQueryQuery, TError, TData>(
+      variables === undefined ? ['currentUserQuery'] : ['currentUserQuery', variables],
+      fetcher<CurrentUserQueryQuery, CurrentUserQueryQueryVariables>(client, CurrentUserQueryDocument, variables, headers),
       options
     );
-useSignInUserMutationMutation.getKey = () => 'SignInUserMutation';
+
+useCurrentUserQueryQuery.getKey = (variables?: CurrentUserQueryQueryVariables) => variables === undefined ? ['currentUserQuery'] : ['currentUserQuery', variables];
+;

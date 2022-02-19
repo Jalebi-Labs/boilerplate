@@ -1,5 +1,13 @@
 type Query {
-  viewer: String
+  viewer: Viewer
+}
+
+type Viewer {
+  user: User!
+}
+
+type User {
+  name: String!
 }
 
 type Mutation {

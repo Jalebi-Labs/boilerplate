@@ -34,3 +34,11 @@ export const settingsRoute = () => {
 export const logoutRoute = () => {
   return `${baseRoute()}/logout`
 }
+
+export const loginRoute = () => {
+  return `${baseRoute()}/login`
+}
+
+export const signupRoute = () => {
+  return `${baseRoute()}/signup`
+}
